@@ -22,8 +22,8 @@ $jsonObj = json_decode($jsonStr);
 print_r($jsonStr);
 foreach ($jsonObj->events as $event) {
 if(‘message’ == $event->type){
-// debug
-//file_put_contents(“message.json”, json_encode($event));
+debug
+file_put_contents(“message.json”, json_encode($event));
 $text = $event->message->text;
 
 if (preg_match(“/สวัสดี/”, $text)) {
