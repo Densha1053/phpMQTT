@@ -68,7 +68,7 @@ class phpMQTT {
 
 	/* connects to the broker 
 		inputs: $clean: should the client send a clean session flag */
-	function connect($clean = true, $will = NULL, $username = NULL, $password = NULL){
+	function connect($clean = true, $will = NULL, $username = "Benz1053", $password = "benz1053"){
 		
 		if($will) $this->will = $will;
 		if($username) $this->username = $username;
