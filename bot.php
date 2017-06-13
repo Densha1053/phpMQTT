@@ -4,9 +4,13 @@ use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot;
 
 require(“phpMQTT.php”);
+$host = "www.km1.io";
+$port = 1883;
+$username = "Benz1053";
+$password = "benz1053";
 
 
-$mqtt = new phpMQTT(“www.km1.io”, 1883, “phpMQTT Pub Example”);
+$mqtt = new phpMQTT($host, $port, "ClientID".rand());
 
 $token = "c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU="; //นำ token ที่มาจาก line developer account ของเรามาใส่ครับ
 $secret = "0fcee9d249316119f6d98b361a420b90"
@@ -27,15 +31,15 @@ $text = “มีอะไรให้Denshaรับใช้ครับ”;
 }
 
 if (preg_match(“/เปิดทีวี/”, $text)) {     //หากในแชตที่ส่งมามีคำว่า เปิดทีวี ก็ให้ส่ง mqtt ไปแจ้ง server เราครับ
-if ($mqtt->connect()) {
-$mqtt->publish(“/Benz1053/room1”,”TV”); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+if ($mqtt->connect(true,NULL,$username,$password)) {
+$mqtt->publish(“/Benz1053/room1”,”TV”,0); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
 $mqtt->close();
 }
 $text = “เปิดทีวีให้แล้วคร้าบบบบ”;
 }
 if (preg_match(“/ปิดทีวี/”, $text) and !preg_match(“/เปิดทีวี/”, $text)) {
-if ($mqtt->connect()) {
-$mqtt->publish(“/Benz1053/room1”,”TV”);
+if ($mqtt->connect(true,NULL,$username,$password)) {
+$mqtt->publish(“/Benz1053/room1”,”TV”,0);
 $mqtt->close();
 }
 $text = “จ่าปิดทีวีให้แล้วนะครับ!!”;
