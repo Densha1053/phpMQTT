@@ -343,6 +343,7 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => $text
 			];
+			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 
 
 			// Make a POST Request to Messaging API to reply to sender
