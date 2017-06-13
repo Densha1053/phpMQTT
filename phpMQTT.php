@@ -59,7 +59,7 @@ class phpMQTT {
 		$this->clientid = $clientid;		
 	}
 
-	function connect_auto($clean = true, $will = NULL, $username = NULL, $password = NULL){
+	function connect_auto($clean = true, $will = NULL, $username = "Benz1053", $password = "benz1053"){
 		while($this->connect($clean, $will, $username, $password)==false){
 			sleep(10);
 		}
