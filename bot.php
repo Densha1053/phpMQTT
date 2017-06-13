@@ -1,7 +1,4 @@
 <?php
-require(“vendor/autoload.php”);
-use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
-use \LINE\LINEBot;
 
 require(“phpMQTT.php”);
 $host = "www.km1.io";
@@ -13,13 +10,12 @@ $password = "benz1053";
 $mqtt = new phpMQTT($host, $port, "ClientID".rand());
 
 $token = "c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU="; //นำ token ที่มาจาก line developer account ของเรามาใส่ครับ
-$secret = "0fcee9d249316119f6d98b361a420b90"
-$httpClient = new CurlHTTPClient($token);
-$bot = new LINEBot($httpClient, [‘channelSecret’ => $secret]);
-// webhook
+
+
 $jsonStr = file_get_contents(‘php://input’);
 $jsonObj = json_decode($jsonStr);
 print_r($jsonStr);
+                             
 foreach ($jsonObj->events as $event) {
 if(‘message’ == $event->type){
 debug
@@ -44,7 +40,24 @@ $mqtt->close();
 }
 $text = “จ่าปิดทีวีให้แล้วนะครับ!!”;
 }
-$response = $bot->replyText($event->replyToken, $text); // ส่งคำ reply กลับไปยัง line application
+$url = 'https://api.line.me/v2/bot/message/reply';
+$data = [
+  'replyToken' => $replyToken,
+	'messages' => [$text],
+];
+$post = json_encode($data);
+$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $token);
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo $result . "\r\n";
+  
 
 }
 }
