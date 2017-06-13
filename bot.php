@@ -13,9 +13,9 @@ $password = “benz1053”;
 $mqtt = new phpMQTT($host, $port, “phpMQTT Pub Example”);
 
 $token = "c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU="; //นำ token ที่มาจาก line developer account ของเรามาใส่ครับ
-
+$secret = "0fcee9d249316119f6d98b361a420b90"
 $httpClient = new CurlHTTPClient($token);
-$bot = new LINEBot($httpClient, [‘channelSecret’ => '0fcee9d249316119f6d98b361a420b90']);
+$bot = new LINEBot($httpClient, [‘channelSecret’ => $secret]);
 // webhook
 $jsonStr = file_get_contents(‘php://input’);
 $jsonObj = json_decode($jsonStr);
