@@ -345,7 +345,7 @@ if (!is_null($events['events'])) {
 			];
 			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 			if ($mqtt->connect(true, NULL, $username, $password)) {
-				$mqtt->publish($topic, json_encode($message), 0, true);
+				$mqtt->publish($topic, $message, 0, true);
 				$mqtt->close();
 			}
 
