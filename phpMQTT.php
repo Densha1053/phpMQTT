@@ -59,7 +59,7 @@ class phpMQTT {
 		$this->clientid = $clientid;		
 	}
 
-	function connect_auto($clean = true, $will = NULL, $username = "Benz1053", $password = "benz1053"){
+	function connect_auto($clean = true, $will = NULL, $username = NULL, $password = NULL){
 		while($this->connect($clean, $will, $username, $password)==false){
 			sleep(10);
 		}
@@ -68,7 +68,7 @@ class phpMQTT {
 
 	/* connects to the broker 
 		inputs: $clean: should the client send a clean session flag */
-	function connect($clean = true, $will = NULL, $username = "Benz1053", $password = "benz1053"){
+	function connect($clean = true, $will = NULL, $username = NULL, $password = NULL){
 		
 		if($will) $this->will = $will;
 		if($username) $this->username = $username;
