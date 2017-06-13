@@ -1,6 +1,5 @@
 <?php
-require(“phpMQTT.php”);
-$mqtt = new phpMQTT(“www.km1.io”, 1883, “phpMQTT Pub Example”);
+
 $access_token = 'c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -23,10 +22,7 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => $text
 			];
-			if ($mqtt->connect(true,NULL,"Benz1053","benz1053")) {
-				$mqtt->publish(“/Benz1053/room1”,”TV”); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
-				$mqtt->close();
-			}
+
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
