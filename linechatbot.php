@@ -5,7 +5,7 @@ use \LINE\LINEBot;
 require(“phpMQTT.php”);
 
 $host = “www.km1.io”;
-$port = 1880;
+$port = 1883;
 $username = “Benz1053”;
 $password = “benz1053”;
 
