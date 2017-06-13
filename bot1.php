@@ -1,5 +1,5 @@
 <?php
-require(“phpMQTT.php”);
+//require(“phpMQTT.php”);
 
 
 //$mqtt = new phpMQTT(“www.km1.io”, 1883, “phpMQTT Pub Example”);
