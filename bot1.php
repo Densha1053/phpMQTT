@@ -22,8 +22,8 @@ class phpMQTT {
 
 	/* sets the broker details */
 	function broker($address, $port, $clientid){
-		$this->www.km1.io = $address;
-		$this->1880 = $port;
+		$this->address = $address;
+		$this->port = $port;
 		$this->clientid = $clientid;		
 	}
 
