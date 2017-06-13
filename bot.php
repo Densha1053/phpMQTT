@@ -1,13 +1,13 @@
 <?php
 
-require(“phpMQTT.php”);
-$host = "www.km1.io";
-$port = 1883;
-$username = "Benz1053";
-$password = "benz1053";
+//require(“phpMQTT.php”);
+//$host = "www.km1.io";
+//$port = 1883;
+//$username = "Benz1053";
+//$password = "benz1053";
 
 
-$mqtt = new phpMQTT($host, $port, "ClientID".rand());
+//$mqtt = new phpMQTT($host, $port, "ClientID".rand());
 
 $token = "c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU="; //นำ token ที่มาจาก line developer account ของเรามาใส่ครับ
 
@@ -30,10 +30,10 @@ foreach ($jsonObj['events'] as $event) {
 		}
 
 		if (preg_match(“/เปิดทีวี/”, $text)) {     //หากในแชตที่ส่งมามีคำว่า เปิดทีวี ก็ให้ส่ง mqtt ไปแจ้ง server เราครับ
-			if ($mqtt->connect(true,NULL,$username,$password)) {
-				$mqtt->publish(“/Benz1053/room1”,”TV”,0); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
-				$mqtt->close();
-			}
+			//if ($mqtt->connect(true,NULL,$username,$password)) {
+				//$mqtt->publish(“/Benz1053/room1”,”TV”,0); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+				//$mqtt->close();
+			//}
 			$text = “เปิดทีวีให้แล้วคร้าบบบบ”;
 			$messages = [
 				'type' => 'text',
@@ -41,10 +41,10 @@ foreach ($jsonObj['events'] as $event) {
 			];
 		}
 		if (preg_match(“/ปิดทีวี/”, $text) and !preg_match(“/เปิดทีวี/”, $text)) {
-			if ($mqtt->connect(true,NULL,$username,$password)) {
-				$mqtt->publish(“/Benz1053/room1”,”TV”,0);
-				$mqtt->close();
-			}
+			//if ($mqtt->connect(true,NULL,$username,$password)) {
+				//$mqtt->publish(“/Benz1053/room1”,”TV”,0);
+				//$mqtt->close();
+			//}
 			$text = "ปิดทีวีให้แล้วนะครับ!!”;
 			$messages = [
 				'type' => 'text',
