@@ -1,8 +1,5 @@
 <?php
-//require(“phpMQTT.php”);
 
-
-//$mqtt = new phpMQTT(“www.km1.io”, 1883, “phpMQTT Pub Example”);
 class phpMQTT {
 	private $socket; 			/* holds the socket	*/
 	private $msgid = 1;			/* counter for message id */
@@ -345,7 +342,7 @@ if (!is_null($events['events'])) {
 			];
 			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 			if ($mqtt->connect(true, NULL, $username, $password)) {
-				$mqtt->publish($topic, $message, 0, true);
+				$mqtt->publish($topic, $text, 0, true);
 				$mqtt->close();
 			}
 
