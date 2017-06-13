@@ -16,10 +16,8 @@ $jsonStr = file_get_contents(‘php://input’);
 $jsonObj = json_decode($jsonStr);
 print_r($jsonStr);
                              
-foreach ($jsonObj->events as $event) {
-	if(‘message’ == $event->type){
-		debug
-		file_put_contents(“message.json”, json_encode($event));
+foreach ($jsonObj['events'] as $event) {
+	if($event['type'] == 'message' && $event['message']['type'] == 'text'){
 		$text = $event['message']['text'];
 		$replyToken = $event['replyToken'];
 
