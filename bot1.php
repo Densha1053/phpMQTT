@@ -22,8 +22,8 @@ class phpMQTT {
 
 	/* sets the broker details */
 	function broker($address, $port, $clientid){
-		$this->address = $address;
-		$this->port = $port;
+		$this->www.km1.io = $address;
+		$this->1880 = $port;
 		$this->clientid = $clientid;		
 	}
 
@@ -376,7 +376,7 @@ class phpMQTT {
 			}
 	}
 }
-$mqtt = new phpMQTT(“www.km1.io”, 1883, “phpMQTT Pub Example”);
+//$mqtt = new phpMQTT(“www.km1.io”, 1883, “phpMQTT Pub Example”);
 
 $access_token = 'c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU=';
 
