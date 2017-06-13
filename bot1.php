@@ -334,17 +334,19 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
+			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 			// Build message to reply back
+			if (preg_match(“/สวัสดี/”, $text)) {    
+				if ($mqtt->connect()) {
+					$mqtt->publish($topic, $text, 0, true); 
+					$mqtt->close();
+				}
+				$text = “สวัสดีคร้าบ มีอะไรให้ Densha ช่วยครับ”;
+			}
 			$messages = [
 				'type' => 'text',
 				'text' => $text
 			];
-			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
-			if ($mqtt->connect(true, NULL, $username, $password)) {
-				$mqtt->publish($topic, $text, 0, true);
-				$mqtt->close();
-			}
 
 
 			// Make a POST Request to Messaging API to reply to sender
