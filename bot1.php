@@ -340,7 +340,7 @@ if (!is_null($events['events'])) {
 				$mqtt->publish($topic, $text, 0, true); 
 				$mqtt->close();
 			}
-			if ($text == "สวัสดี"||$text == "hello"||$text =="ดี"||$text =="ดีจ้า"||$text =="หวัดดี"||$text =="สวัสดีจ้า"||$text =="ไง"||$text =="เป็นไง"||$text =="Hello"||$text =="hi||$text =="Hi"){
+			if ($text == "สวัสดี"||$text == "hello"||$text =="ดี"||$text =="ดีจ้า"||$text =="หวัดดี"||$text =="สวัสดีจ้า"||$text =="ไง"||$text =="เป็นไง"||$text =="Hello"||$text =="hi"){
 				$a = array("ดีจ้า มีไรให้ densha ช่วยป่าว","สวัสดีคร้าบบบบ","ดีคร้าบ","สวัสดีครับ พร้อมให้ช่วยแล้วครับ",);
 				$b = array_rand($a,1);
 				$text = $a[$b];
