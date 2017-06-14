@@ -336,6 +336,10 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 			// Build message to reply back
+			if ($mqtt->connect()) {
+				$mqtt->publish($topic, $text, 0, true); 
+				$mqtt->close();
+			}
 			if ($text == "สวัสดี"||$text == "hello"){
 				$text="ดีจ้า มีไรให้ช่วยป่าว";
 			}
@@ -343,10 +347,6 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => $text
 			];
-			if ($mqtt->connect()) {
-				$mqtt->publish($topic, $text, 0, true); 
-				$mqtt->close();
-			}
 
 
 			// Make a POST Request to Messaging API to reply to sender
