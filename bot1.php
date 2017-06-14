@@ -341,7 +341,8 @@ if (!is_null($events['events'])) {
 				$mqtt->close();
 			}
 			if ($text == "สวัสดี"||$text == "hello"){
-				$text="ดีจ้า มีไรให้ช่วยป่าว";
+				$a = array("ดีจ้า มีไรให้ densha ช่วยป่าว","สวัสดีคร้าบบบบ","ดีคร้าบ","สวัสดีครับ พร้อมให้ช่วยแล้วครับ",);
+				$text = array_rand($a,1);
 			}
 			$messages = [
 				'type' => 'text',
