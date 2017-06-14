@@ -336,7 +336,9 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 			// Build message to reply back
-			
+			if ($text == "สวัสดี"||$text == "hello"){
+				$text="ดีจ้า มีไรให้ช่วยป่าว";
+			}
 			$messages = [
 				'type' => 'text',
 				'text' => $text
