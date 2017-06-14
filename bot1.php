@@ -342,7 +342,8 @@ if (!is_null($events['events'])) {
 			}
 			if ($text == "สวัสดี"||$text == "hello"){
 				$a = array("ดีจ้า มีไรให้ densha ช่วยป่าว","สวัสดีคร้าบบบบ","ดีคร้าบ","สวัสดีครับ พร้อมให้ช่วยแล้วครับ",);
-				$text = array_rand($a,1);
+				$b = array_rand($a,1);
+				$text = $a[$b];
 			}
 			$messages = [
 				'type' => 'text',
