@@ -339,19 +339,6 @@ if (!is_null($events['events'])) {
 				$mqtt->publish("/Benz1053/room2", $text, 0, true); 
 				$mqtt->close();
 			}
-			if(!$mqtt->connect(true,NULL,$username,$password)){
-				exit(1);
-			}
-			$topic['/Benz1053/room2'] = array("qos"=>0, "function"=>"procmsg");
-			$mqtt->subscribe($topic,0);
-			while($mqtt->proc()){
-		
-			}
-			$mqtt->close();
-			function procmsg($topic,$msg){
-				echo "Msg Recieved: $msg";
-				$text = $msg
-			}
 			
 			$messages = [
 				'type' => 'text',
