@@ -317,7 +317,6 @@ $host = "www.km1.io";
 $port = "1883";
 $username = "Benz1053";
 $password = "benz1053";
-$topic = "/Benz1053/room2";
 $access_token = 'c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -337,7 +336,7 @@ if (!is_null($events['events'])) {
 			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 			// Build message to reply back
 			if ($mqtt->connect(true,NULL,$username,$password)) {
-				$mqtt->publish($topic, $text, 0, true); 
+				$mqtt->publish("/Benz1053/room2", $text, 0, true); 
 				$mqtt->close();
 			}
 			if(!$mqtt->connect(true,NULL,$username,$password)){
