@@ -340,6 +340,9 @@ if (!is_null($events['events'])) {
 				$mqtt->publish($topic, $text, 0, true); 
 				$mqtt->close();
 			}
+			if(!$mqtt->connect(true,NULL,$username,$password)){
+				exit(1);
+			}
 			$topics['ferries/IOW/#'] = array("qos"=>0, "function"=>"procmsg");
 			$mqtt->subscribe($topics,0);
 			while($mqtt->proc()){
