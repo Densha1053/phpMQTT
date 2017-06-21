@@ -343,6 +343,7 @@ if (!is_null($events['events'])) {
 			if(!$mqtt->connect(true,NULL,$username,$password)){
   				exit(1);
 			}
+			$topics['/Benz1053/room1'] = array("qos"=>0, "function"=>"procmsg");
 			
 			$messages = [
 				'type' => 'text',
