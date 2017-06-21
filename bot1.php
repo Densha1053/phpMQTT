@@ -345,6 +345,11 @@ if (!is_null($events['events'])) {
 				$b = array_rand($a,1);
 				$text = $a[$b];
 			}
+			if ($text == "เป็นไงบ้าง"||$text == "สบายดีมั้ย"){
+				$a1 = array("สบายดี","ไม่เป็นอะไร");
+				$b1 = array_rand($a1,1);
+				$text = $a1[$b1];
+			}
 			$messages = [
 				'type' => 'text',
 				'text' => $text
