@@ -349,8 +349,7 @@ if (!is_null($events['events'])) {
 			$topics['/Benz1053/room1'] = array("qos"=>0, "function"=>"procmsg");
 			$mqtt->subscribe($topics,0);
 
-			while($mqtt->proc()){
-			}
+		
 
 			$mqtt->close();
 			function procmsg($topic,$msg){
