@@ -340,16 +340,17 @@ if (!is_null($events['events'])) {
 				$mqtt->publish($topic, $text, 0, true); 
 				$mqtt->close();
 			}
-			if ($text == "สวัสดี"||$text == "hello"||$text =="ดี"||$text =="ดีจ้า"||$text =="หวัดดี"||$text =="สวัสดีจ้า"||$text =="ไง"||$text =="เป็นไง"||$text =="Hello"||$text =="hi"){
-				$a = array("ดีจ้า มีไรให้ densha ช่วยป่าว","สวัสดีคร้าบบบบ","ดีคร้าบ","สวัสดีครับ พร้อมให้ช่วยแล้วครับ",);
-				$b = array_rand($a,1);
-				$text = $a[$b];
+			$topics['ferries/IOW/#'] = array("qos"=>0, "function"=>"procmsg");
+			$mqtt->subscribe($topics,0);
+			while($mqtt->proc()){
+		
 			}
-			if ($text == "เป็นไงบ้าง"||$text == "สบายดีมั้ย"){
-				$a1 = array("สบายดี","ไม่เป็นอะไร");
-				$b1 = array_rand($a1,1);
-				$text = $a1[$b1];
+			$mqtt->close();
+			function procmsg($topic,$msg){
+				echo "Msg Recieved: ".date("r")."\nTopic:{$topic}\n$msg\n";
+				$text = $msg
 			}
+			
 			$messages = [
 				'type' => 'text',
 				'text' => $text
