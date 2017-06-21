@@ -354,6 +354,8 @@ if (!is_null($events['events'])) {
 			$mqtt->close();
 			function procmsg($topic,$msg){
   				echo "Msg Recieved: $msg";
+				$text = $msg;
+				return $text;
 			}
 			
 			$messages = [
