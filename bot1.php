@@ -339,6 +339,7 @@ if (!is_null($events['events'])) {
 				$mqtt->publish("/Benz1053/room2", $text, 0, true); 
 				$mqtt->close();
 			}
+			$mqtt = new phpMQTT($host, $port, "iftt.php".rand());
 			if(!$mqtt->connect(true,NULL,$username,$password)){
 				exit(1);
 			}
