@@ -353,6 +353,7 @@ if (!is_null($events['events'])) {
 			function default_subscribe_callback($mqtt, $topic, $message) {
     				printf("Message received: Topic=%s, Message=%s\n", $topic, $message);
 				$text = $message;
+				return $text;
    				 break;
 			}
 			
