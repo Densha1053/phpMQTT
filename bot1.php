@@ -349,15 +349,17 @@ if (!is_null($events['events'])) {
   			$topics['topic'] = array("qos"=>0, "function"=>"procmsg");
   			$mqtt->subscribe($topics,0);
 
-  			while($mqtt->proc()){        
+  			while($mqtt->proc()){
+				break;
   			}
 
   			$mqtt->close();
   			function procmsg($topic,$msg){
-    			echo "Msg Recieved: $msg";
+    				echo "Msg Recieved: $msg";
+				return $msg;
 			
   			}
-			$text = $msg;
+			$text = procmsg();
 			$messages = [
 				'type' => 'text',
 				'text' => $text
