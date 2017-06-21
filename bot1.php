@@ -339,23 +339,23 @@ if (!is_null($events['events'])) {
 				$mqtt->publish("/Benz1053/room2", $text, 0, true); 
 				$mqtt->close();
 			}
-			$mqtt = new phpMQTT($host, $port, "ClientID".rand());
+			$mqtt = new phpMQTT($host, $port, "ClientID".rand()); 
 
-			if(!$mqtt->connect(true,NULL,$username,$password)){
-  				exit(1);
-			}
+  			if(!$mqtt->connect(true,NULL,$username,$password)){
+    				exit(1);
+  			}
 
-//currently subscribed topics
-			$topics['/Benz1053/room1'] = 0;
-			$mqtt->subscribe($topics,0);
+  //currently subscribed topics
+  			$topics['topic'] = array("qos"=>0, "function"=>"procmsg");
+  			$mqtt->subscribe($topics,0);
 
-			$mqtt->loop('default_subscribe_callback');
-			$mqtt->unsubscribe(array_keys($topics));
-			function default_subscribe_callback($mqtt, $topic, $message) {
-    				printf("Message received: Topic=%s, Message=%s\n", $topic, $message);
-   				break;
-			}
-			$text = $message;
+  			while($mqtt->proc()){        
+  			}
+
+  			$mqtt->close();
+  			function procmsg($topic,$msg){
+    			echo "Msg Recieved: $msg";
+			$text = $msg;
 			$messages = [
 				'type' => 'text',
 				'text' => $text
@@ -381,6 +381,8 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
+  			}
+			
 		}
 	}
 }
