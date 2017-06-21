@@ -347,11 +347,12 @@ if (!is_null($events['events'])) {
 			$mqtt->subscribe($topics,0);
 			while($mqtt->proc()){
 			}
-			$text = $msg;
 
 			$mqtt->close();
 			function procmsg($topic,$msg){
   				echo "Msg Recieved: $msg";
+				$text = $msg;
+				return $text;
 
 			}
 			
