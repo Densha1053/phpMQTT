@@ -348,14 +348,11 @@ if (!is_null($events['events'])) {
 //currently subscribed topics
 			$topics['/Benz1053/room1'] = array("qos"=>0, "function"=>"procmsg");
 			$mqtt->subscribe($topics,0);
-
-		
+			$text = $msg;
 
 			$mqtt->close();
 			function procmsg($topic,$msg){
   				echo "Msg Recieved: $msg";
-				$text = $msg;
-				return $text;
 			}
 			
 			$messages = [
