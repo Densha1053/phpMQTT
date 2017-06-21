@@ -346,16 +346,14 @@ if (!is_null($events['events'])) {
 			}
 
 //currently subscribed topics
-			$topics['/Benz1053/room1'] = array("qos"=>0, "function"=>"procmsg");
+			$topics['/Benz1053/room1'] = 0;
 			$mqtt->subscribe($topics,0);
 
-			$mqtt->close();
-			while($mqtt->proc()){
+			$mqtt->loop('default_subscribe_callback');
+			function default_subscribe_callback($mqtt, $topic, $message) {
+    printf("Message received: Topic=%s, Message=%s\n", $topic, $message);
+    break;
 }
-			function procmsg($topic,$msg){
-  				echo "Msg Recieved: $msg";
-				$text = $msg;
-			}
 			
 			$messages = [
 				'type' => 'text',
