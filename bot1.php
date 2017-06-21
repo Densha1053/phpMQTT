@@ -340,6 +340,9 @@ if (!is_null($events['events'])) {
 				$mqtt->close();
 			}
 			$mqtt = new phpMQTT($host, $port, "ClientID".rand());
+			if(!$mqtt->connect(true,NULL,$username,$password)){
+  				exit(1);
+			}
 			
 			$messages = [
 				'type' => 'text',
