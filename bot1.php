@@ -351,9 +351,10 @@ if (!is_null($events['events'])) {
 
 			$mqtt->loop('default_subscribe_callback');
 			function default_subscribe_callback($mqtt, $topic, $message) {
-    printf("Message received: Topic=%s, Message=%s\n", $topic, $message);
-    break;
-}
+    				printf("Message received: Topic=%s, Message=%s\n", $topic, $message);
+				$text = $message;
+   				 break;
+			}
 			
 			$messages = [
 				'type' => 'text',
