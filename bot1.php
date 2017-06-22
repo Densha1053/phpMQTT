@@ -355,9 +355,7 @@ if (!is_null($events['events'])) {
   			$mqtt->close();
   			function procmsg($topic,$msg){
     				echo "Msg Recieved: $msg";
-			
-  			}
-			$text = $msg;
+				$text = $msg;
 			$messages = [
 				'type' => 'text',
 				'text' => $text
@@ -383,6 +381,9 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
+			
+  			}
+			
 			
 		}
 	}
