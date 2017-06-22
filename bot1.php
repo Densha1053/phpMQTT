@@ -389,5 +389,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "$t"
+echo "$t";
 echo "OK";
