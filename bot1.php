@@ -352,7 +352,7 @@ if (!is_null($events['events'])) {
 			for ($i = 0; $i < 2; $i++) {
     				$mqtt->proc();
 			}
-  			$mqtt->close();
+  			//$mqtt->close();
   			function procmsg($topic,$msg){
     				echo "Msg Recieved: $msg";
 				global $t;
