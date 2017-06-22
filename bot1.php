@@ -349,15 +349,14 @@ if (!is_null($events['events'])) {
   			$topics['topic'] = array("qos"=>0, "function"=>"procmsg");
   			$mqtt->subscribe($topics,0);
 
-			for ($i = 0; $i < 2; $i++) {
+			for ($i = 0; $i < 3; $i++) {
     				$mqtt->proc();
 			}
-  			//$mqtt->close();
+ 
   			function procmsg($topic,$msg){
     				echo "Msg Recieved: $msg";
 				global $t;
-				$t = $msg ;
-				
+				$t = $msg ;	
 			
   			}
 			$text = $t;
