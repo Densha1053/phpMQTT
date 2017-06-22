@@ -355,9 +355,12 @@ if (!is_null($events['events'])) {
   			$mqtt->close();
   			function procmsg($topic,$msg){
     				echo "Msg Recieved: $msg";
+				global $t;
+				$t = $msg ;
+				
 			
   			}
-			$text = "AMI";
+			$text = $t;
 			$messages = [
 				'type' => 'text',
 				'text' => $text
