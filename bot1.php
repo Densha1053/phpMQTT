@@ -349,7 +349,7 @@ if (!is_null($events['events'])) {
   			$topics['topic'] = array("qos"=>0, "function"=>"procmsg");
   			$mqtt->subscribe($topics,0);
 
-			for ($i = 0; $i < 10; $i++) {
+			for ($i = 0; $i < 1; $i++) {
     				$mqtt->proc();
 			}
 			$mqtt->unsubscribe($topics);
@@ -389,5 +389,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo $msg;
 echo "OK";
