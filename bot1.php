@@ -357,7 +357,7 @@ if (!is_null($events['events'])) {
     				echo "Msg Recieved: $msg";
 			
   			}
-			$text = "AMI";
+			$text = $msg;
 			$messages = [
 				'type' => 'text',
 				'text' => $text
