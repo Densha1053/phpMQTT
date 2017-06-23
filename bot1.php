@@ -358,8 +358,7 @@ if (!is_null($events['events'])) {
 				GLOBAL $msg1;
 				$msg1=$msg;
   			}
-			GLOBAL $msg1;
-			$text = $msg1;
+			$text = "$msg1";
 			$messages = [
 				'type' => 'text',
 				'text' => $text
