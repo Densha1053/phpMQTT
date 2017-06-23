@@ -372,18 +372,24 @@ if (!is_null($events['events'])) {
   			$mqtt->subscribe($topics,0);
 			
 			$mqtt->proc();
+			function procmsg($topic,$msg){
+    				echo "Msg Recieved: $msg";
+	
+	   if ($mqtt->connect(true,NULL,$username,$password)) {
+				$mqtt->publish("/Benz1053/room2", $msg, 0, true); 
+			}
+	
+	
+	
+// 				global $t;
+// 				$t = $msg;
+				return $msg;
+// Make a POST Request to Messaging API to reply to sender
 
-			
- 
-  			
-			$text = $t;
 			$messages = [
-	'type' => 'text',
-				'text' => $text
+				'type' => 'text',
+				'text' => $msg
 			];
-
-
-			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
@@ -402,6 +408,12 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
+			}
+
+			
+
+
+			
 			
 			
 		}
@@ -412,14 +424,3 @@ echo "OK";
 
 
 
-function procmsg($topic,$msg){
-    				echo "Msg Recieved: $msg";
-	
-	   if ($mqtt->connect(true,NULL,$username,$password)) {
-				$mqtt->publish("/Benz1053/room2", $msg, 0, true); 
-			}
-	
-// 				global $t;
-// 				$t = $msg;
-				return $msg;
-  			}
