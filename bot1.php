@@ -383,6 +383,7 @@ if (!is_null($events['events'])) {
   			}
 			$text = "time is";
 			$messages = [
+				{
  				"type": "template",
   				"altText": "this is a confirm template",
   				"template": {
@@ -401,6 +402,7 @@ if (!is_null($events['events'])) {
           					}
       					]
   				}
+				}
 			];
 
 
