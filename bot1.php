@@ -370,37 +370,16 @@ if (!is_null($events['events'])) {
   			}
   			$topics['/Benz1053/room1'] = array("qos"=>0, "function"=>"procmsg");
   			$mqtt->subscribe($topics,0);
+			
+			$mqtt->proc();
 
-			for ($i = 0; $i < 2; $i++) {
-    				$mqtt->proc();
-			}
+			
  
-  			function procmsg($topic,$msg){
-    				echo "Msg Recieved: $msg";
-				global $t;
-				$t = $msg;
-				return $msg;
-  			}
-			$text = "time is";
+  			
+			$text = $t;
 			$messages = [
-				"type"=> "template",
-  "altText"=> "this is a confirm template",
-  "template"=> {
-      "type"=> "confirm",
-      "text"=> "Are you sure?",
-      "actions"=> [
-          {
-            "type"=> "message",
-            "label"=> "Yes",
-            "text"=> "yes"
-          },
-          {
-            "type"=> "message",
-            "label"=> "No",
-            "text"=> "no"
-          }
-      ]
-  }
+	'type' => 'text',
+				'text' => $text
 			];
 
 
@@ -430,3 +409,17 @@ if (!is_null($events['events'])) {
 }
 echo "$t";
 echo "OK";
+
+
+
+function procmsg($topic,$msg){
+    				echo "Msg Recieved: $msg";
+	
+	   if ($mqtt->connect(true,NULL,$username,$password)) {
+				$mqtt->publish("/Benz1053/room2", $msg, 0, true); 
+			}
+	
+// 				global $t;
+// 				$t = $msg;
+				return $msg;
+  			}
