@@ -346,7 +346,7 @@ if (!is_null($events['events'])) {
   			}
 
   //currently subscribed topics
-  			$topics['topic'] = array("qos"=>0, "function"=>"procmsg");
+  			$topics['/Benz1053/room1'] = array("qos"=>0, "function"=>"procmsg");
   			$mqtt->subscribe($topics,0);
 
 			for ($i = 0; $i < 2; $i++) {
