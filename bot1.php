@@ -372,10 +372,18 @@ if (!is_null($events['events'])) {
   			$mqtt->subscribe($topics,0);
 			
 			$mqtt->proc();
-			function procmsg($topic,$msg){
-    				echo "Msg Recieved: $msg";
+			
+			
+			
+		}
+	}
+}
+echo "$t";
+echo "OK";
+function procmsg($topic,$msg){
+    			echo "Msg Recieved: $msg";
 	
-	   if ($mqtt->connect(true,NULL,$username,$password)) {
+	   		if ($mqtt->connect(true,NULL,$username,$password)) {
 				$mqtt->publish("/Benz1053/room2", $msg, 0, true); 
 			}
 	
@@ -408,19 +416,7 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-			}
-
-			
-
-
-			
-			
-			
-		}
-	}
 }
-echo "$t";
-echo "OK";
 
 
 
