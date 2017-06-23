@@ -355,10 +355,9 @@ if (!is_null($events['events'])) {
  
   			function procmsg($topic,$msg){
     				echo "Msg Recieved: $msg";
-				GLOBAL $msg1;
-				$msg1=$msg;
+				return $msg;
   			}
-			$text = "$msg1";
+			$text = procmsg($topic,$msg);
 			$messages = [
 				'type' => 'text',
 				'text' => $text
