@@ -391,7 +391,7 @@ function procmsg($topic,$msg){
 	
 // 				global $t;
 // 				$t = $msg;
-				return $msg;
+				
 // Make a POST Request to Messaging API to reply to sender
 
 			$messages = [
@@ -416,6 +416,9 @@ function procmsg($topic,$msg){
 			curl_close($ch);
 
 			echo $result . "\r\n";
+	
+	             return $msg;
+	
 }
 
 
