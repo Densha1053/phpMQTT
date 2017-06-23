@@ -381,7 +381,7 @@ if (!is_null($events['events'])) {
 				$t = $msg;
 				return $msg;
   			}
-			$text = $t;
+			$text = "time is";
 			$messages = [
 				'type' => 'text',
 				'text' => $text
